@@ -7,9 +7,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import aparikh.blissworld.abstractcomponents.AbstractComponent;
+import aparikh.blissworld.abstractcomponents.BaseComponent;
 
-public class CartPage extends AbstractComponent {
+public class CartPage extends BaseComponent {
 	WebDriver driver;
 
 	public CartPage(WebDriver driver) {

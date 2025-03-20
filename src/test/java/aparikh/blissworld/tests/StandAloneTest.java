@@ -30,6 +30,8 @@ public class StandAloneTest {
 		By announcement2 = By.xpath("(//div[@class='layer-wiziwig'])[1]");
 		By cookiesAccept = By.xpath("//button[@aria-label='Accept']");
 		By starterKit = By.xpath("//a[@banner-id='Bliss Starter Kit PDP Tile']");
+		By essentialsKit = By.xpath("//a[@banner-id='Essentials Kit PDP Tile']");
+		By productPrice = By.xpath("//div[@class='desktop-only']//span[@class='ProductMeta__Price Price Price--highlight Text--subdued u-h4']");
 		By addToCart = By.xpath("//div[@class='add_to_bag_btn add_to_bag_btn_atc custom-select']");
 		By checkoutBtn = By.xpath("//button[@class='rebuy-button rebuy-cart__checkout-button block']");
 		By checkoutPrice = By.xpath("//div[@role='row']//div[@role='cell']//strong");
@@ -39,6 +41,7 @@ public class StandAloneTest {
 		//Home page
 		driver.findElement(announcement).click();
 		driver.findElement(cookiesAccept).click();
+		Assert.assertEquals(driver.getTitle(), "Skin Care & Beauty Products | 100% Cruelty-Free | Bliss – Bliss World Store");
 		//Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		//driver.switchTo().alert();
 		//alert.dismiss();
@@ -53,25 +56,29 @@ public class StandAloneTest {
 //				driver.switchTo().window(parent);
 //			}
 //		}
-		new Actions(driver).moveToElement(driver.findElement(starterKit)).perform();
-		driver.findElement(starterKit).click();
+		new Actions(driver).moveToElement(driver.findElement(essentialsKit)).perform();
+		driver.findElement(essentialsKit).click();
 		
 		//Product page
-		Assert.assertEquals(driver.getCurrentUrl(), "https://www.blissworld.com/products/skin-bliss-starter-kit");
 		driver.findElement(announcement).click();
+		Assert.assertEquals(driver.getCurrentUrl(), "https://www.blissworld.com/products/the-essentials-kit");
+		Assert.assertEquals(driver.getTitle(), "The Essentials Kit – Bliss World Store");
+		Assert.assertEquals(driver.findElement(productPrice).getText(), "$39.00");
 		driver.findElement(addToCart).click();
 		//Checkout slideout
 		driver.findElement(checkoutBtn).click();
 		
 		//Checkout page
 		Assert.assertEquals(driver.getTitle(),"Checkout - Bliss World Store");
-		Assert.assertEquals(driver.findElement(checkoutPrice).getText(), "$55.00");
+		Assert.assertEquals(driver.findElement(checkoutPrice).getText(), "$39.00");
 		driver.findElement(cartIcon).click();
 		
 		//Cart page
 		driver.findElement(announcement).click();
+		Assert.assertEquals(driver.getTitle(),"Your Shopping Cart – Bliss World Store");
+		Assert.assertEquals(driver.getCurrentUrl(), "https://www.blissworld.com/cart");
 		Assert.assertEquals(driver.findElement(By.xpath("//h1")).getText(), "CART");
 		new Actions(driver).moveToElement(driver.findElement(cartTotal)).perform();
-		Assert.assertEquals(driver.findElement(cartTotal).getText(), "Total: $55.00");
+		Assert.assertEquals(driver.findElement(cartTotal).getText(), "Total: $39.00");
 	}
 }

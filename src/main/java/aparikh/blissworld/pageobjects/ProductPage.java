@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import aparikh.blissworld.abstractcomponents.AbstractComponent;
+import aparikh.blissworld.abstractcomponents.BaseComponent;
 
-public class ProductPage extends AbstractComponent {
+public class ProductPage extends BaseComponent {
 	WebDriver driver;
 
 	public ProductPage(WebDriver driver) {
@@ -19,12 +19,16 @@ public class ProductPage extends AbstractComponent {
 	
 	By addToCart = By.xpath("//div[@class='add_to_bag_btn add_to_bag_btn_atc custom-select']");
 	By checkoutBtn = By.xpath("//button[@class='rebuy-button rebuy-cart__checkout-button block']");
+	By productPrice = By.xpath("//div[@class='desktop-only']//span[@class='ProductMeta__Price Price Price--highlight Text--subdued u-h4']");
 	
 	@FindBy(xpath = "//div[@class='add_to_bag_btn add_to_bag_btn_atc custom-select']") 
 	WebElement addToCart2;
 	
 	@FindBy(xpath = "//button[@class='rebuy-button rebuy-cart__checkout-button block']")
 	WebElement checkoutBtn2;
+	
+	@FindBy(xpath = "//div[@class='desktop-only']//span[@class='ProductMeta__Price Price Price--highlight Text--subdued u-h4']")
+	WebElement productPrice2;
 	
 	public void clickAddToCart() {
 		//driver.findElement(addToCart).click();
@@ -34,5 +38,9 @@ public class ProductPage extends AbstractComponent {
 	public void clickCheckoutBtn() {
 		//driver.findElement(checkoutBtn).click();
 		checkoutBtn2.click();
+	}
+	
+	public String getProductPrice() {
+		return productPrice2.getText();
 	}
 }

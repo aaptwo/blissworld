@@ -11,9 +11,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import aparikh.blissworld.abstractcomponents.AbstractComponent;
+import aparikh.blissworld.abstractcomponents.BaseComponent;
 
-public class HomePage extends AbstractComponent {
+public class HomePage extends BaseComponent {
 	WebDriver driver;
 	
 	public HomePage(WebDriver driver) {
@@ -23,13 +23,17 @@ public class HomePage extends AbstractComponent {
 	}
 	
 	By cookiesAccept = By.xpath("//button[@aria-label='Accept']");
-	By starterKit = By.xpath("//a[@banner-id='Bliss Starter Kit PDP Tile']");
+	//By starterKit = By.xpath("//a[@banner-id='Bliss Starter Kit PDP Tile']");
+	By essentialsKit = By.xpath("//a[@banner-id='Essentials Kit PDP Tile']");
 	
 	@FindBy(xpath = "//button[@aria-label='Accept']")
 	WebElement cookiesAccept2;
 	
-	@FindBy(xpath = "//a[@banner-id='Bliss Starter Kit PDP Tile']" )
-	WebElement starterKit2;
+	//@FindBy(xpath = "//a[@banner-id='Bliss Starter Kit PDP Tile']" )
+	//WebElement starterKit2;
+	
+	@FindBy(xpath = "//a[@banner-id='Essentials Kit PDP Tile']")
+	WebElement essentialsKit2;
 	
 	public void dismissBanner() {
 		
@@ -43,10 +47,14 @@ public class HomePage extends AbstractComponent {
 	}
 	
 	public void clickStarterKit() {
-		new Actions(driver).moveToElement(driver.findElement(starterKit)).perform();
+		//new Actions(driver).moveToElement(driver.findElement(starterKit)).perform();
 		//driver.findElement(starterKit).click();
-		starterKit2.click();
+		//starterKit2.click();
 	}
 	
-	
+	public void clickEssentialsKit() {
+		new Actions(driver).moveToElement(driver.findElement(essentialsKit)).perform();
+		//driver.findElement(essentialsKit).click();
+		essentialsKit2.click();
+	}
 }

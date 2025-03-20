@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AbstractComponent {
+public class BaseComponent {
 	WebDriver driver;
 	
-	public AbstractComponent(WebDriver driver) {
+	public BaseComponent(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);		
 	}
